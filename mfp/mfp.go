@@ -1,6 +1,8 @@
 package mfp
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func PrintFmtVal(str string, v any, verbs []string) {
 	defer func() {
@@ -11,10 +13,19 @@ func PrintFmtVal(str string, v any, verbs []string) {
 
 	str += ": \t"
 	var vs []any
-	for _, verb := range verbs {
+	for k, verb := range verbs {
 		vs = append(vs, v)
-		str += "%%" + verb + " -> %" + verb + " | "
+		if k > 0 {
+			str += " | %%" + verb + " -> %" + verb
+		} else {
+			str += "%%" + verb + " -> %" + verb
+		}
 	}
 	str += "\n"
 	fmt.Printf(str, vs...)
 }
+
+//func PrintSl(str string, sl any) {
+//	t := reflect.TypeOf(sl)
+//	fmt.Println("str=", sl, ",长度=", len(sl), ",容量=", cap(sl))
+//}
