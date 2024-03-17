@@ -4,6 +4,10 @@ import (
 	"fmt"
 )
 
+func PrintHr() {
+	fmt.Println("------------------")
+}
+
 func PrintFmtVal(str string, v any, verbs []string) {
 	defer func() {
 		if err := recover(); err != nil {
