@@ -40,7 +40,7 @@ func PrintFmtVal(str string, v any, verbs []string) {
 func PrintFmtValWithLC(str string, v any, verbs []string) {
 	// 非数组和切片报错
 	kind := reflect.TypeOf(v).Kind()
-	if kind != reflect.Slice || kind != reflect.Array {
+	if !(kind == reflect.Slice || kind == reflect.Array) {
 		panic("非数组和切片不能调用该函数：PrintFmtValWithLC")
 	}
 
